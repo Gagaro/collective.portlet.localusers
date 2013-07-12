@@ -1,0 +1,43 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.portlet.localusers">
+
+    <five:registerPackage package="." initialize=".initialize" />
+
+  <includeDependencies package="." />
+  <include package="Products.CMFCore" file="permissions.zcml" />
+  <i18n:registerTranslations directory="locales" />
+
+  <genericsetup:registerProfile
+       name="default"
+       title="collective.portlet.localusers"
+       directory="profiles/default"
+       description="List users having a local role on the current content."
+       provides="Products.GenericSetup.interfaces.EXTENSION"
+       />
+  <include file="upgrades.zcml" />
+
+     <!-- Register the portlet -->
+
+     <!-- If the portlet has no configurable parameters, you can remove
+          the EditForm declaration in localusers.py and delete
+          the 'editview' attribute from this statement.
+       -->
+
+     <plone:portlet
+         name="collective.portlet.localusers.LocalUsers"
+         interface=".localusers.ILocalUsers"
+         assignment=".localusers.Assignment"
+         view_permission="zope2.View"
+         edit_permission="cmf.ManagePortal"
+         renderer=".localusers.Renderer"
+         addview=".localusers.AddForm"
+         editview=".localusers.EditForm"
+         />
+
+</configure>

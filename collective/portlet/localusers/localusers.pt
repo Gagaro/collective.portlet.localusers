@@ -1,0 +1,23 @@
+<dl class="portlet portletLocalUsers"
+    i18n:domain="collective.portlet.localusers">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <tal:title tal:content="view/data/title">Header</tal:title>
+        <span class="portletTopRight"></span>
+    </dt>
+
+      <dd class="portletItem odd">
+	<ul class="localusers_list">
+	  <tal:block tal:repeat="user view/getUsers">
+            <li><a tal:content="user" tal:attributes="href string:${context/portal_url}/author/${user/id}">Fullname</a></li>
+	  </tal:block>
+	</ul>
+      </dd>
+
+    <dd class="portletFooter">
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<portlets>
+
+ <!-- Portlet type registrations -->
+
+ <portlet
+   addview="collective.portlet.localusers.LocalUsers"
+   title="Local Users"
+   description="List users having a local role on the current content."
+   />
+
+</portlets>
