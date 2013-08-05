@@ -1,15 +1,18 @@
 from zope import interface
 from zope import schema
 from z3c.form import field
+from z3c.form.browser.select import SelectFieldWidget
 
 from Products.CMFCore.utils import getToolByName
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
 from plone.app.portlets.browser import z3cformhelper
+from plone.autoform import directives
+from plone.autoform.form import AutoExtensibleForm
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from collective.portlet.localusers import LocalUsersMessageFactory as _
-from collective.portlet.localusers import vocabularies
+
 
 class ILocalUsers(IPortletDataProvider):
     """A portlet
@@ -24,13 +27,14 @@ class ILocalUsers(IPortletDataProvider):
         required=False,
     )
 
+    directives.widget('roles', SelectFieldWidget, multiple='multiple')
     roles = schema.List(
         title=_("Roles"),
         description=_("The users with these roles will be shown.\
         If none are selected, it will show users from all roles."),
         required=False,
         value_type=schema.Choice(
-            vocabulary=vocabularies.roles
+            vocabulary='collective.portlet.localusers.vocabularies.localroles'
         ),
     )
 
@@ -87,23 +91,25 @@ class Renderer(base.Renderer):
         return users
 
 
-class AddForm(z3cformhelper.AddForm):
+class AddForm(AutoExtensibleForm, z3cformhelper.AddForm):
     """Portlet add form.
 
     This is registered in configure.zcml. The form_fields variable tells
     zope.formlib which fields to display. The create() method actually
     constructs the assignment that is being added.
     """
-    fields = field.Fields(ILocalUsers)
+    schema = ILocalUsers
+    enableCSRFProtection = True
 
     def create(self, data):
         return Assignment(**data)
 
 
-class EditForm(z3cformhelper.EditForm):
+class EditForm(AutoExtensibleForm, z3cformhelper.EditForm):
     """Portlet edit form.
 
     This is registered with configure.zcml. The form_fields variable tells
     zope.formlib which fields to display.
     """
-    fields = field.Fields(ILocalUsers)
+    schema = ILocalUsers
+    enableCSRFProtection = True

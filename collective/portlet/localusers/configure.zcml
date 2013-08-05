@@ -29,6 +29,10 @@
           the 'editview' attribute from this statement.
        -->
 
+     <utility component=".vocabularies.localRoles"
+	      name="collective.portlet.localusers.vocabularies.localroles"
+	      provides="zope.schema.interfaces.IVocabularyFactory" />
+
      <plone:portlet
          name="collective.portlet.localusers.LocalUsers"
          interface=".localusers.ILocalUsers"
