@@ -87,7 +87,9 @@ class Renderer(base.Renderer):
         mtool = getToolByName(self.context, 'portal_membership')
         users = []
         for user in users_name:
-            users.append(mtool.getMemberById(user))
+            member = mtool.getMemberById(user)
+            if member is not None:
+                users.append(member)
         return users
 
 

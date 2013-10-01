@@ -10,7 +10,10 @@
       <dd class="portletItem odd">
 	<ul class="localusers_list">
 	  <tal:block tal:repeat="user view/getUsers">
-            <li><a tal:content="user" tal:attributes="href string:${context/portal_url}/author/${user/id}">Fullname</a></li>
+            <li><a tal:content="user/fullname"
+		   tal:attributes="href string:${context/portal_url}/author/${user/id}">
+		Fullname
+	    </a></li>
 	  </tal:block>
 	</ul>
       </dd>
