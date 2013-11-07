@@ -1,5 +1,7 @@
+<tal:portlet tal:define="users view/getUsers">
 <dl class="portlet portletLocalUsers"
-    i18n:domain="collective.portlet.localusers">
+    i18n:domain="collective.portlet.localusers"
+    tal:condition="users">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
@@ -8,14 +10,14 @@
     </dt>
 
       <dd class="portletItem odd">
-	<ul class="localusers_list">
-	  <tal:block tal:repeat="user view/getUsers">
+        <ul class="localusers_list">
+          <tal:block tal:repeat="user users">
             <li><a tal:content="user/fullname"
-		   tal:attributes="href string:${context/portal_url}/author/${user/id}">
-		Fullname
-	    </a></li>
-	  </tal:block>
-	</ul>
+                   tal:attributes="href string:${context/portal_url}/author/${user/id}">
+                Fullname
+            </a></li>
+          </tal:block>
+        </ul>
       </dd>
 
     <dd class="portletFooter">
@@ -24,3 +26,4 @@
     </dd>
 
 </dl>
+</tal:portlet>
