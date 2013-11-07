@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<portlets>
+<portlets
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="plone">
 
  <!-- Portlet type registrations -->
 
@@ -7,6 +9,8 @@
    addview="collective.portlet.localusers.LocalUsers"
    title="Local Users"
    description="List users having a local role on the current content."
+   i18n:attributes="title;
+                    description"
    />
 
 </portlets>

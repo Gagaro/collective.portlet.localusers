@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-11-07 10:38+0000\n"
+"POT-Creation-Date: 2013-10-29 09:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,21 +15,13 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: collective.portlet.localusers\n"
+"Domain: plone\n"
 
-#: ./localusers.py:26
-msgid "Header"
+#: ./profiles/default/portlets.xml
+msgid "List users having a local role on the current content."
 msgstr ""
 
 #: ./localusers.py:51
+#: ./profiles/default/portlets.xml
 msgid "Local Users"
 msgstr ""
-
-#: ./localusers.py:32
-msgid "Roles"
-msgstr ""
-
-#: ./localusers.py:33
-msgid "The users with these roles will be shown.        If none are selected, it will show users from all roles."
-msgstr ""
-
