@@ -2,14 +2,12 @@
 <dl class="portlet portletLocalUsers"
     i18n:domain="collective.portlet.localusers"
     tal:condition="users">
-
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
         <tal:title tal:content="view/data/title">Header</tal:title>
         <span class="portletTopRight"></span>
     </dt>
-
-      <dd class="portletItem odd">
+    <dd class="portletItem odd">
         <ul class="localusers_list">
           <tal:block tal:repeat="user users">
             <li><a tal:content="user/fullname"
@@ -18,12 +16,6 @@
             </a></li>
           </tal:block>
         </ul>
-      </dd>
-
-    <dd class="portletFooter">
-        <span class="portletBottomLeft"></span>
-        <span class="portletBottomRight"></span>
     </dd>
-
 </dl>
 </tal:portlet>
