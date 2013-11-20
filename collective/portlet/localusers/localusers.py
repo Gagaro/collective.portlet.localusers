@@ -1,6 +1,5 @@
 from zope import interface
 from zope import schema
-from z3c.form import field
 from z3c.form.browser.select import SelectFieldWidget
 
 from Products.CMFCore.utils import getToolByName
