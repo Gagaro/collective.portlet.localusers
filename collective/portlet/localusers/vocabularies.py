@@ -11,6 +11,6 @@ def localRoles(context):
             baseNormalize(role),
             baseNormalize(role),
             _(role),
-            ) for role in sorted(context.valid_roles())
-        ]
+        ) for role in sorted(context.valid_roles())
+    ]
     return SimpleVocabulary(roles)
